@@ -71,3 +71,4 @@ The shadow is falsed categorized as spot on the road. I tried to remove the shad
 After doing that tuning, I got better result.
 
 It is generally not robust though. I tried with challenge video, I think it cannot distinguish the line-shaped stuff on the road and curb shadow if it is to close to the lane line. Maybe the first one can be elminated by a more sophisticated design of region of interest and second one can be done by a good design of shadow removal algorithm instead of simply using a threshold on Value channel.
+Also, when it passes the turn there is shake on the driveable area, I think I need to use smooth method to optimize that when I have time.
