@@ -1,4 +1,5 @@
 # SDC-P4
+#### The code for project is in adv_lane_dectection.ipynb. The other notebook is for parameter fine-tune.
 
 ## Camera Calibration
 #### 1. Have the camera matrix and distortion coefficients been computed correctly and checked on one of the calibration images as a test?
