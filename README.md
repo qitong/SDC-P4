@@ -29,11 +29,16 @@ One thing need to mention is that I apply grayscale to image first, then use sin
 
 ![alt tag](https://raw.githubusercontent.com/qitong/SDC-P4/master/output_images/sobel_comparison.png)
 
+* The following is modified after first submission:  
+To achieve better result, I use use color selection combined with sobel magnitude, the code lies in `Yellow & White Lane Detection` section. I tried to detect yellow lane line and white lane line separately (before I always trying to detect them both in one shot, which generates worse result), and then OR the two binary images.
+![alt tag](https://raw.githubusercontent.com/qitong/SDC-P4/master/output_images/color_hsv_selection.png)
+
+
 #### 3. Has a perspective transform been applied to rectify the image?
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this
 one: (saved as perspective_straight_lines1.jpg in output_images/)
-The code for my perspective transform is includes a function called perspective_transform() , which appears in the first two cell under "Perspective Transform" section. This function takes an image and a transform matrix M as input. M is defined by src and dst points through cv2.getPerspectiveTransform(). For src and dst points, dst is what I suppose it should be after transform, so that a rectangle with coordinate [[400,625],[1035,625],[400,400],[1035,400]] ; on the other end, src points is generated from "test_images/straight_lines1.jpg", I use my image software manualy measured as [[255,678],[1053,678],[556,475],[729,475]] (I suppose those lane line as indicated is straight and pick two pairs each from same horizontal value.)
+The code for my perspective transform is includes a function called perspective_transform() , which appears in the first two cell under "Perspective Transform" section. This function takes an image and a transform matrix M as input. M is defined by src and dst points through cv2.getPerspectiveTransform(). For src and dst points, dst is what I suppose it should be after transform, so that a rectangle with coordinate [[400,625],[1035,625],[400,200],[1035,200]] ; on the other end, src points is generated from "test_images/straight_lines1.jpg", I use my image software manualy measured as [[255,678],[1053,678],[556,475],[729,475]] (I suppose those lane line as indicated is straight and pick two pairs each from same horizontal value.)
 
 ![alt tag](https://raw.githubusercontent.com/qitong/SDC-P4/master/output_images/perspective_comparison.png)
 
@@ -45,16 +50,21 @@ Then I did some other stuff and fit my lane lines with a 2nd order polynomial ki
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 I use the code provided in course 35 to calculate the curvation in both pixel space and real world.  
-The code responsed is settled in "Calculate Curvation" section (first 2 code pieces respectively).
+The code responsed is settled in "Calculate Curvation" section (first 2 code pieces respectively). I have changed this part, please see section 7 below.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 ![alt tag](https://raw.githubusercontent.com/qitong/SDC-P4/master/output_images/drawback_on_road_demonstration.png)
 
+#### 7. Curvation and Center Off Calculation.
+I calculate the curvation and center off position using the functions under `Calculate Curvation and Center Off` section in notebook. The curvation is calculated according to the course. And the center off position is calculated by compare the position of middle of the end of left and right curve to the middle of screen (where I suppose to be the center of the real car position).  
+
+
 ## Pipeline (video)
 #### 1. Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).  
-
-Here is my video link: https://youtu.be/gmVLclvZYUQ
+Here's a [link to my video result](https://raw.githubusercontent.com/qitong/SDC-P4/master/project_out.mp4) in repo.
+And here's the same one on youtube:
+[![alt Project_output](https://img.youtube.com/vi/286CATfcGU8/0.jpg)](https://youtu.be/286CATfcGU8)
 
 ## Discussion
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project. Where will your pipeline likely fail? What could you do to make it more robust?  
