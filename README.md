@@ -59,6 +59,10 @@ The code responsed is settled in "Calculate Curvation" section (first 2 code pie
 #### 7. Curvation and Center Off Calculation.
 I calculate the curvation and center off position using the functions under `Calculate Curvation and Center Off` section in notebook. The curvation is calculated according to the course. And the center off position is calculated by compare the position of middle of the end of left and right curve to the middle of screen (where I suppose to be the center of the real car position).  
 
+### 8. Finally the pipeline for processing image with curvation and center off info output looks like:
+
+![alt tag](https://raw.githubusercontent.com/qitong/SDC-P4/master/output_images/final_processing_image.png)
+
 
 ## Pipeline (video)
 #### 1. Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).  
